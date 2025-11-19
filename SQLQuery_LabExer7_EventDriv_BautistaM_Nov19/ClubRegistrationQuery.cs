@@ -37,10 +37,12 @@ namespace SQLQuery_LabExer7_EventDriv_BautistaM_Nov19
             bindingSource = new BindingSource();
         }
 
-        private bool DisplayList()
+        bool DisplayList()
         {
+            //7.a
             String ViewClubMembers = "SELECT StudentID, FirstName, MiddleName, LastName, Age, Gender, Program FROM ClubMembers";
-        
+           //7.b
+            sqlAdapter = new SqlDataAdapter(ViewClubMembers,sqlConnect);
         }
 
 
