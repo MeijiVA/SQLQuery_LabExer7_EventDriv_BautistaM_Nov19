@@ -29,7 +29,8 @@ namespace SQLQuery_LabExer7_EventDriv_BautistaM_Nov19
         ClubRegistrationQuery()
         {
             connectionString = "Data Source=LAB-A-PC00;Initial Catalog=ClubDB_BautistaM;User ID=bautista.m;Password=12345;TrustServerCertificate=True";
-        
+            sqlConnect = new SqlConnection(connectionString);
         }
     }
 }
++
