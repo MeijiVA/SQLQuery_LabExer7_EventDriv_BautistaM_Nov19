@@ -26,10 +26,10 @@ namespace SQLQuery_LabExer7_EventDriv_BautistaM_Nov19
             _Program;
         public int _Age;
 
-        ClubRegistrationQuery()
+        public ClubRegistrationQuery()
         {
             //6.a
-            connectionString = "Data Source=LAB-A-PC00;Initial Catalog=ClubDB_BautistaM;User ID=bautista.m;Password=12345;TrustServerCertificate=True";
+            connectionString = "Data Source=LAB-A-PC00;Initial Catalog=ClubDB_BautistaM2;User ID=bautista.m;Password=12345;TrustServerCertificate=True";
             //6.b
             sqlConnect = new SqlConnection(connectionString);
             //6.c
