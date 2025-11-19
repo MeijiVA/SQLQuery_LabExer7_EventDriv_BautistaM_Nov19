@@ -41,16 +41,20 @@ namespace SQLQuery_LabExer7_EventDriv_BautistaM_Nov19
         private void cboxStudentID_SelectedIndexChanged(object sender, EventArgs e)
         {
             //string StudentID, string FirstName, string MiddleName, string LastName, int Age, string Gender, string Program
-            sqlCommand = new SqlCommand($"SELECT FirstName, MiddleName, LastName, Age, Gender, Program FROM ClubMembers WHERE StudentID = {cboxStudentID}", sqlConnect);
+            
+            sqlCommand = new SqlCommand($"SELECT FirstName, MiddleName, LastName, Age, Gender, Program FROM ClubMembers WHERE StudentID = {cboxStudentID.Text}", sqlConnect);
             sqlConnect.Open();
             using (var reader = sqlCommand.ExecuteReader())
             {
-                txtFN.Text = reader[0].ToString();
-                txtMN.Text = reader[1].ToString();
-                txtLN.Text = reader[2].ToString();
-                txtAge.Text = reader[3].ToString();
-                cboxGender.Text = reader[4].ToString();
-                cboxProgram.Text = reader[5].ToString();
+                while (reader.Read())
+                {
+                    txtFN.Text = reader[0].ToString();
+                    txtMN.Text = reader[1].ToString();
+                    txtLN.Text = reader[2].ToString();
+                    txtAge.Text = reader[3].ToString();
+                    cboxGender.Text = reader[4].ToString();
+                    cboxProgram.Text = reader[5].ToString();
+                }
             }
 
             sqlCommand.ExecuteNonQuery();
@@ -66,7 +70,7 @@ namespace SQLQuery_LabExer7_EventDriv_BautistaM_Nov19
         public bool UpdateStudent(long StudentID, string FirstName, string MiddleName, string LastName, int Age, string Gender, string Program)
         {
 
-            sqlCommand = new SqlCommand($"UPDATE ClubMembers SET ID = @ID, StudentID = @StudentID,FirstName = @FirstName, MiddleName = @MiddleName,LastName =  @LastName,Age = @Age, Gender = @Gender,Program =  @Program) WHERE StudentID = {cboxStudentID}", sqlConnect);
+            sqlCommand = new SqlCommand($"UPDATE ClubMembers SET StudentID = @StudentID, FirstName = @FirstName, MiddleName = @MiddleName,LastName =  @LastName,Age = @Age, Gender = @Gender,Program =  @Program WHERE StudentID = {cboxStudentID.Text}", sqlConnect);
             sqlCommand.Parameters.Add("@RegistrationID", SqlDbType.BigInt).Value = StudentID;
             sqlCommand.Parameters.Add("@StudentID", SqlDbType.VarChar).Value = StudentID;
             sqlCommand.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = FirstName;
